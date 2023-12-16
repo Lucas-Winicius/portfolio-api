@@ -1,0 +1,21 @@
+{
+    "framework": "nest",
+    "build": {
+        "command": "nest build",
+        "ignore": [
+            "node_modules/**/*",
+            ".vercelignore"
+        ]
+    },
+    "headers": [
+        {
+            "source": "/",
+            "headers": [
+                {
+                    "key": "Access-Control-Allow-Origin",
+                    "value": "*"
+                }
+            ]
+        }
+    ]
+}
