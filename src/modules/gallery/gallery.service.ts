@@ -16,13 +16,15 @@ export class GalleryService {
   }
 
   async findAll() {
-    const images = await this.prisma.picture.findMany();
+    const pictures = await this.prisma.picture.findMany();
 
-    return images;
+    return pictures;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} gallery`;
+  async findOne(id: string) {
+    const picture = await this.prisma.picture.findFirst({ where: { id } });
+
+    return picture;
   }
 
   update(id: number, updateGalleryDto: UpdateGalleryDto) {

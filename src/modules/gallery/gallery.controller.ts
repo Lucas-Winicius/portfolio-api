@@ -31,7 +31,7 @@ export class GalleryController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.galleryService.findOne(+id);
+    return this.galleryService.findOne(id);
   }
 
   @Patch(':id')
