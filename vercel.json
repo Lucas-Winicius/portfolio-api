@@ -1,12 +1,6 @@
 {
     "framework": "nest",
-    "build": {
-        "command": "nest build",
-        "ignore": [
-            "node_modules/**/*",
-            ".vercelignore"
-        ]
-    },
+    "buildCommand": "nest build",
     "headers": [
         {
             "source": "/",
