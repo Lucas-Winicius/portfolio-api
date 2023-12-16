@@ -1,6 +1,5 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { CreateGalleryDto } from './dto/create-gallery.dto';
-import { UpdateGalleryDto } from './dto/update-gallery.dto';
 import { PrismaService } from 'src/database/prisma.service';
 
 @Injectable()
@@ -27,11 +26,9 @@ export class GalleryService {
     return picture;
   }
 
-  update(id: number, updateGalleryDto: UpdateGalleryDto) {
-    return `This action updates a #${id} gallery`;
-  }
+  async remove(id: string) {
+    const deletedPicture = await this.prisma.picture.delete({ where: { id } });
 
-  remove(id: number) {
-    return `This action removes a #${id} gallery`;
+    return deletedPicture;
   }
 }
