@@ -8,14 +8,17 @@ export class GalleryService {
   constructor(private prisma: PrismaService) {}
   async create(createGalleryDto: CreateGalleryDto, authCode: string) {
     if (authCode !== process.env.AUTH_CODE) throw new UnauthorizedException();
+
     const picture = await this.prisma.picture.create({
       data: createGalleryDto,
     });
     return picture;
   }
 
-  findAll() {
-    return `This action returns all gallery`;
+  async findAll() {
+    const images = await this.prisma.picture.findMany();
+
+    return images;
   }
 
   findOne(id: number) {
