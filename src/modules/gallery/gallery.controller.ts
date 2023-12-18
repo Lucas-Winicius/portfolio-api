@@ -1,12 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Delete,
-  Query,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { GalleryService } from './gallery.service';
 import { CreateGalleryDto } from './dto/create-gallery.dto';
 
@@ -15,11 +7,8 @@ export class GalleryController {
   constructor(private readonly galleryService: GalleryService) {}
 
   @Post()
-  create(
-    @Body() createGalleryDto: CreateGalleryDto,
-    @Query() { authCode }: { authCode: string },
-  ) {
-    return this.galleryService.create(createGalleryDto, authCode);
+  create(@Body() createGalleryDto: CreateGalleryDto) {
+    return this.galleryService.create(createGalleryDto);
   }
 
   @Get()

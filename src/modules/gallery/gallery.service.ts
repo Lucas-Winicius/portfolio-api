@@ -5,9 +5,7 @@ import { PrismaService } from 'src/database/prisma.service';
 @Injectable()
 export class GalleryService {
   constructor(private prisma: PrismaService) {}
-  async create(createGalleryDto: CreateGalleryDto, authCode: string) {
-    if (authCode !== process.env.AUTH_CODE) throw new UnauthorizedException();
-
+  async create(createGalleryDto: CreateGalleryDto) {
     const picture = await this.prisma.picture.create({
       data: createGalleryDto,
     });
